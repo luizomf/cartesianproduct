@@ -1,6 +1,6 @@
 {
   "name": "cartesian-product-multiple-arrays",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Find the cartesian product of multiple arrays.",
   "main": "lib/product.js",
   "directories": {
