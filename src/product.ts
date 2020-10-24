@@ -21,9 +21,3 @@ export function cartesianProduct(...arrayOfArrays: any[][]): any[][] | never {
 
   return flatFinalProduct;
 }
-
-const sizes = ['SM', 'MD', 'LG'];
-const colors = ['Red', 'Green'];
-const material = ['Cotton', 'Polyester'];
-
-console.log(cartesianProduct(sizes, colors, material));
