@@ -37,5 +37,6 @@
     "product of arrays"
   ],
   "author": "Luiz Otavio Miranda",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/luizomf/cartesianproduct"
 }
