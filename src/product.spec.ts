@@ -1,11 +1,9 @@
 import { cartesianProduct } from './product';
 
 describe('cartesianProduct', () => {
-  it('should throw if less than two arrays passed', () => {
-    let sut = () => cartesianProduct([1, 2]);
-    expect(sut).toThrow(Error);
-    sut = () => cartesianProduct();
-    expect(sut).toThrow(Error);
+  it('should throw if no array is passed', () => {
+    const sut = () => cartesianProduct();
+    expect(sut).toThrow(TypeError);
   });
 
   it('should accept arrays with any type of values', () => {
@@ -85,5 +83,72 @@ describe('cartesianProduct', () => {
       ['LG', 'Green', 'Cotton'],
       ['LG', 'Green', 'Polyester'],
     ]);
+  });
+
+  it('should accept multiple arrays', () => {
+    const values = [
+      [1, 2],
+      ['a'],
+      ['@', '$', '%', '&'],
+      ['+', '-'],
+      ['.', '..', '...'],
+    ];
+    const sut = cartesianProduct(...values);
+    expect(sut).toEqual([
+      [1, 'a', '@', '+', '.'],
+      [1, 'a', '@', '+', '..'],
+      [1, 'a', '@', '+', '...'],
+      [1, 'a', '@', '-', '.'],
+      [1, 'a', '@', '-', '..'],
+      [1, 'a', '@', '-', '...'],
+      [1, 'a', '$', '+', '.'],
+      [1, 'a', '$', '+', '..'],
+      [1, 'a', '$', '+', '...'],
+      [1, 'a', '$', '-', '.'],
+      [1, 'a', '$', '-', '..'],
+      [1, 'a', '$', '-', '...'],
+      [1, 'a', '%', '+', '.'],
+      [1, 'a', '%', '+', '..'],
+      [1, 'a', '%', '+', '...'],
+      [1, 'a', '%', '-', '.'],
+      [1, 'a', '%', '-', '..'],
+      [1, 'a', '%', '-', '...'],
+      [1, 'a', '&', '+', '.'],
+      [1, 'a', '&', '+', '..'],
+      [1, 'a', '&', '+', '...'],
+      [1, 'a', '&', '-', '.'],
+      [1, 'a', '&', '-', '..'],
+      [1, 'a', '&', '-', '...'],
+      [2, 'a', '@', '+', '.'],
+      [2, 'a', '@', '+', '..'],
+      [2, 'a', '@', '+', '...'],
+      [2, 'a', '@', '-', '.'],
+      [2, 'a', '@', '-', '..'],
+      [2, 'a', '@', '-', '...'],
+      [2, 'a', '$', '+', '.'],
+      [2, 'a', '$', '+', '..'],
+      [2, 'a', '$', '+', '...'],
+      [2, 'a', '$', '-', '.'],
+      [2, 'a', '$', '-', '..'],
+      [2, 'a', '$', '-', '...'],
+      [2, 'a', '%', '+', '.'],
+      [2, 'a', '%', '+', '..'],
+      [2, 'a', '%', '+', '...'],
+      [2, 'a', '%', '-', '.'],
+      [2, 'a', '%', '-', '..'],
+      [2, 'a', '%', '-', '...'],
+      [2, 'a', '&', '+', '.'],
+      [2, 'a', '&', '+', '..'],
+      [2, 'a', '&', '+', '...'],
+      [2, 'a', '&', '-', '.'],
+      [2, 'a', '&', '-', '..'],
+      [2, 'a', '&', '-', '...'],
+    ]);
+  });
+
+  it('should accept only one array', () => {
+    const values = [['M', 'G', 'GG']];
+    const sut = cartesianProduct(...values);
+    expect(sut).toEqual([['M'], ['G'], ['GG']]);
   });
 });
