@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export default function cartesianProduct(
-  ...arrayOfArrays: any[][]
-): any[][] | never {
+export function cartesianProduct(...arrayOfArrays: any[][]): any[][] | never {
   const finalProduct = [];
   const [arrayA, arrayB, ...restOfArrays] = arrayOfArrays;
 
@@ -18,10 +16,14 @@ export default function cartesianProduct(
   });
 
   if (restOfArrays.length) {
-    return cartesianProduct(flatFinalProduct, restOfArrays);
+    return cartesianProduct(flatFinalProduct, ...restOfArrays);
   }
 
   return flatFinalProduct;
 }
 
-// console.log(cartesianProduct(['abc', 'def']));
+const sizes = ['SM', 'MD', 'LG'];
+const colors = ['Red', 'Green'];
+const material = ['Cotton', 'Polyester'];
+
+console.log(cartesianProduct(sizes, colors, material));

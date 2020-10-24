@@ -1,4 +1,4 @@
-import cartesianProduct from './product';
+import { cartesianProduct } from './product';
 
 describe('cartesianProduct', () => {
   it('should throw if less than two arrays passed', () => {
@@ -18,11 +18,6 @@ describe('cartesianProduct', () => {
       [2, 'b'],
       [2, 'c'],
     ]);
-  });
-
-  it('should accept arrays with zero or one value', () => {
-    const sut = cartesianProduct([1], ['a'], []);
-    expect(sut).toEqual([[1, 'a']]);
   });
 
   it('should accept complex arrays', () => {
@@ -68,6 +63,27 @@ describe('cartesianProduct', () => {
       [2, 3],
       [3, 2],
       [3, 3],
+    ]);
+    values = [
+      ['SM', 'MD', 'LG'],
+      ['Red', 'Green'],
+      ['Cotton', 'Polyester'],
+    ];
+
+    sut = cartesianProduct(...values);
+    expect(sut).toEqual([
+      ['SM', 'Red', 'Cotton'],
+      ['SM', 'Red', 'Polyester'],
+      ['SM', 'Green', 'Cotton'],
+      ['SM', 'Green', 'Polyester'],
+      ['MD', 'Red', 'Cotton'],
+      ['MD', 'Red', 'Polyester'],
+      ['MD', 'Green', 'Cotton'],
+      ['MD', 'Green', 'Polyester'],
+      ['LG', 'Red', 'Cotton'],
+      ['LG', 'Red', 'Polyester'],
+      ['LG', 'Green', 'Cotton'],
+      ['LG', 'Green', 'Polyester'],
     ]);
   });
 });
