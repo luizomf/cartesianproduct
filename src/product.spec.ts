@@ -153,13 +153,13 @@ describe('cartesianProduct', () => {
   });
 });
 
-describe('cartesianProductGenerator', () => {
+describe('cartesianProductGenerator (GENERATOR)*', () => {
   it('should throw if no array is passed', () => {
     const sut = () => cartesianProductGenerator().next().value;
     expect(sut).toThrow(TypeError);
   });
 
-  it('should accept arrays with any type of values', () => {
+  it('should accept arrays with any type of values (GENERATOR)', () => {
     const sut = cartesianProductGenerator([1, 2], ['a', 'b', 'c']);
     expect(sut.next().value).toEqual([
       [1, 'a'],
@@ -171,7 +171,7 @@ describe('cartesianProductGenerator', () => {
     ]);
   });
 
-  it('should accept complex arrays', () => {
+  it('should accept complex arrays (GENERATOR)', () => {
     const dummy1 = { name: 'Luiz', aMethod: () => 'OK' };
     const dummy2 = Object.create(dummy1);
 
@@ -184,7 +184,7 @@ describe('cartesianProductGenerator', () => {
     ]);
   });
 
-  it('should return correct values', () => {
+  it('should return correct values (GENERATOR)', () => {
     let values = [
       ['x', 'y', 'z'],
       [1, 2, 3],
@@ -215,6 +215,7 @@ describe('cartesianProductGenerator', () => {
       [3, 2],
       [3, 3],
     ]);
+
     values = [
       ['SM', 'MD', 'LG'],
       ['Red', 'Green'],
@@ -222,7 +223,8 @@ describe('cartesianProductGenerator', () => {
     ];
 
     sut = cartesianProductGenerator(...values);
-    expect(sut.next().value).toEqual([
+
+    expect([...sut].slice(-1)[0]).toEqual([
       ['SM', 'Red', 'Cotton'],
       ['SM', 'Red', 'Polyester'],
       ['SM', 'Green', 'Cotton'],
@@ -247,7 +249,7 @@ describe('cartesianProductGenerator', () => {
       ['.', '..', '...'],
     ];
     const sut = cartesianProductGenerator(...values);
-    expect(sut.next().value).toEqual([
+    expect([...sut].slice(-1)[0]).toEqual([
       [1, 'a', '@', '+', '.'],
       [1, 'a', '@', '+', '..'],
       [1, 'a', '@', '+', '...'],
