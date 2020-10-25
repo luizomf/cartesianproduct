@@ -17,7 +17,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "outDir": "./lib",
-    "declaration": true
+    "declaration": true,
+    "removeComments": true
   },
   "include": [
     "src"
